@@ -1,0 +1,61 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="parts/common :: head"></head>
+
+<body>
+
+<div th:insert="~{parts/common :: scripts}"></div>
+<div th:replace="parts/common :: navbar"></div>
+
+
+
+<div id="container" class="container mt-5">
+    <h5>Контактная информация</h5>
+    <br>
+    <p><b>Телефон:</b> +7(916)-474-90-55<br/>
+        <b>E-mail:</b> OFFLINE@gmail.com</p>
+    <br>
+    <h6>Режим работы</h6>
+    <p>Интернет магазин работает c 08:00 до 20:00 без перерыва и выходных. <br/>
+        Онлайн заказы принимаются круглосуточно.</p>
+    <br>
+    <h6>Доставка</h6>
+    <p>Доставка заказов происходит через курьерскую службу либо на ближайщую точку выдачи</p>
+
+</div>
+<form>
+<div style='size: auto' id="map" class="map"></div>
+</form>
+
+
+<div style='margin:auto' id="map-test" class="map"></div>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=1cf9e351-f174-41cc-97d2-3a637a7a37eb&lang=ru_RU"></script>
+<script>
+    let center = [48.8866527839977,2.34310679732974];
+
+    function init() {
+        let map = new ymaps.Map('map-test', {
+            center: [55.88586256886368,37.663018],
+            zoom: 17
+        });
+
+
+    }
+
+    ymaps.ready(init);</script>
+
+
+
+<footer th:insert="~{parts/common :: footer}"></footer>
+
+</body>
+<style>
+.map {
+width: 600px;
+height: 600px;
+background-color: #ececec;
+
+}
+</style>
+</html>

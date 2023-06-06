@@ -1,0 +1,144 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="parts/common :: head"></head>
+
+<body>
+
+<div th:insert="~{parts/common :: scripts}"></div>
+<div th:replace="parts/common :: navbar"></div>
+
+<div id="container">
+    <div class="container">
+        <div th:replace="parts/common :: userNavbar"></div>
+    </div>
+
+    <div class="container mt-5">
+        <form method="post" action="/user/productlist" enctype="multipart/form-data">
+
+        <h5 th:text="${perfume.getId()}"></h5>
+
+        <div th:if="${perfume.getFilename()}" class="col-md-5 mb-3">
+            <div>
+                <img th:src="@{/img/{path} (path = ${perfume.getFilename()})}" class="rounded mx-auto w-100 mb-5">
+
+            </div>
+            <input required type="file" accept="image/*"  name="file" th:value="@{/img/{path} (path = ${perfume.getFilename()})}" >
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Название:</label>
+            <div class="col-sm-6">
+                <input  type="text" name="perfumeTitle" class="form-control" th:value="${perfume.getPerfumeTitle()}"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Производитель:</label>
+            <div class="col-sm-6">
+                <select type="text" name="perfumer" class="form-control" th:value="${perfume.getPerfumer()}">
+
+                    <option th:value="${perfume.getPerfumer()}">Не менять</option>
+                    <option>Burberry</option>
+                    <option>Stone island</option>
+                    <option>Hugo Boss</option>
+                    <option>Hermes</option>
+                    <option>Calvin Klein</option>
+                    <option>Zara</option>
+                    <option>Gucci</option>
+                    <option>Puma</option>
+                    <option>Noname</option>
+                    <option>Xiaomi</option>
+                    <option>Acer</option>
+                    <option>Colgate</option>
+                    <option>Gillette</option>
+                    <option>Chanel</option>
+                    <option>Asus</option>
+                    <option>Intel</option>
+                    <option>Samsung</option>
+                    <option>Deepcool</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Гарантия:</label>
+            <div class="col-sm-6">
+                <input type="number" min="0" name="year" class="form-control" th:value="${perfume.getYear()}"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Страна производитель:</label>
+            <div class="col-sm-6">
+                <input type="text" name="country" class="form-control" th:value="${perfume.getCountry()}" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+             <label class="col-sm-2 col-form-label">Комплектация:</label>
+             <div class="col-sm-6">
+                 <input type="text" name="type" class="form-control" th:value="${perfume.getType()}" />
+             </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Вес:</label>
+            <div class="col-sm-6">
+                <input type="number" min="0" name="volume" class="form-control" th:value="${perfume.getVolume()}" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Женский/мужской:</label>
+            <div class="col-sm-6">
+                <select type="text" name="perfumeGender" class="form-control" th:value="${perfume.getPerfumeGender()}" >
+                    <option th:value="${perfume.getPerfumeGender()}">Не менять</option>
+                    <option>Мужской</option>
+                    <option>Женский</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Материал::</label>
+            <div class="col-sm-6">
+                <input type="text" name="fragranceTopNotes" class="form-control" th:value="${perfume.getFragranceTopNotes()}"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Высота предмета:</label>
+            <div class="col-sm-6">
+                <input type="number" min="0" name="fragranceMiddleNotes" class="form-control" th:value="${perfume.getFragranceMiddleNotes()}"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Ширина предмета:</label>
+            <div class="col-sm-6">
+                <input type="number" min="0" name="fragranceBaseNotes" class="form-control" th:value="${perfume.getFragranceBaseNotes()}"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Цена:</label>
+            <div class="col-sm-6">
+                <input type="number" min="0" name="price" class="form-control" th:value="${perfume.getPrice()}"/>
+            </div>
+        </div>
+
+
+            <input type="hidden" name="id" th:value="${perfume.getId()}"/>
+
+        <button type="submit" class="btn btn-dark">Добавить</button>
+
+
+        </form>
+    </div>
+</div>
+
+<footer th:insert="~{parts/common :: footer}"></footer>
+</body>
+</html>
